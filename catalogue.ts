@@ -1,0 +1,5 @@
+export const URL='https://iienmodlgutwtkadbjhp.supabase.co';
+export const KEY='sb_publishable_gx1hnXgmKudHz6FPiquWnw_WB4PT9aH';
+export async function read(path:string){const r=await fetch(URL+'/rest/v1/'+path,{headers:{apikey:KEY}});if(!r.ok)throw Error('Catalogue unavailable');return r.json();}
+export function imageUrl(path:string){return URL+'/storage/v1/object/public/catalogue-images/'+path.split('/').map(encodeURIComponent).join('/');}
+export async function loadCatalogue(){const [p,c,i,s,b]=await Promise.all([read('products?select=*&order=sort_order'),read('categories?select=*&order=sort_order'),read('product_images?select=*&order=sort_order'),read('shop_settings?id=eq.1&select=*'),read('recipe_books?select=*')]);return {products:p.map((x:any)=>({id:x.id,name:x.name,category:c.find((y:any)=>y.id===x.category_id)?.name||'',cents:x.price_cents,detail:x.serving_line,description:x.description,featured:x.featured,image:i.find((y:any)=>y.product_id===x.id)?.storage_path})),categories:c.map((x:any)=>x.name),settings:s[0]||{},books:b};}
