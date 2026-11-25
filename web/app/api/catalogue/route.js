@@ -1,0 +1,1 @@
+import {loadCatalogue} from '../../../lib/catalogue';export const dynamic='force-dynamic';export async function GET(){try{return Response.json(await loadCatalogue(),{headers:{'Cache-Control':'no-store'}})}catch{return Response.json({error:'Catalogue unavailable'},{status:503})}}

@@ -1,0 +1,1 @@
+'use client';export default function ErrorPage({reset}){return <section className="panel"><h1>Our kitchen is temporarily unavailable.</h1><p>Please retry to load the latest catalogue.</p><button className="primary" onClick={reset}>Try again</button></section>}

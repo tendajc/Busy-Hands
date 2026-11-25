@@ -1,0 +1,1 @@
+import {siteUrl} from '../lib/catalogue';export default function robots(){return {rules:{userAgent:'*',allow:'/',disallow:['/kitchen/','/order','/api/']},sitemap:siteUrl()+'/sitemap.xml'}}

@@ -1,0 +1,1 @@
+import {loadCatalogue,slug,siteUrl} from '../lib/catalogue';export const dynamic='force-dynamic';export default async function sitemap(){const d=await loadCatalogue(),base=siteUrl();return [{url:base},{url:base+'/recipes'},...d.products.map(p=>({url:base+'/products/'+slug(p)}))]}

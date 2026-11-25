@@ -1,0 +1,1 @@
+export default function manifest(){return {id:'/',name:'Busy Hands Bakery',short_name:'Busy Hands',description:'Cakes and treats in Harare',start_url:'/',scope:'/',display:'standalone',background_color:'#F4EFE8',theme_color:'#F4EFE8',icons:[{src:'/icon/192',sizes:'192x192',type:'image/png'},{src:'/icon/512',sizes:'512x512',type:'image/png'}]}}
