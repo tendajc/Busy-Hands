@@ -1,0 +1,23 @@
+name: Web dependency security
+on:
+  push:
+    paths: ['web/**', '.github/workflows/web-security.yml']
+  pull_request:
+    paths: ['web/**']
+  schedule:
+    - cron: '15 7 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --package-lock-only --ignore-scripts
+      - run: npm audit --omit=dev --audit-level=high
